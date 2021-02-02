@@ -14,10 +14,6 @@ spec:
       labels:
         app: redis-sentinel
     spec:
-      volumes:
-        - name: "redis-hostpath"
-          hostPath:
-            path: "/srv/redis-hostpath"
       containers:
         - name: redis-sentinel
           image: nickadam/redis-sentinel-statefulset:1
@@ -26,6 +22,10 @@ spec:
             value: "redis"
           - name: REDIS_SERVICE_NAME
             value: "redis-service"
+          - name: REDIS_SENTINEL_POD_NAME
+            value: "redis-sentinel"
+          - name: REDIS_SENTINEL_SERVICE_NAME
+            value: "redis-sentinel-service"
           - name: PASSWORD
             value: "badpassword"
           - name: INSTANCE_NAME
@@ -37,6 +37,3 @@ spec:
           ports:
             - containerPort: 26379
               name: sentinel
-          volumeMounts:
-            - name: redis-hostpath
-              mountPath: /data

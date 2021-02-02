@@ -5,7 +5,7 @@ metadata:
   name: redis
 spec:
   serviceName: redis-service
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: redis
@@ -26,6 +26,10 @@ spec:
             value: "redis"
           - name: REDIS_SERVICE_NAME
             value: "redis-service"
+          - name: REDIS_SENTINEL_POD_NAME
+            value: "redis-sentinel"
+          - name: REDIS_SENTINEL_SERVICE_NAME
+            value: "redis-sentinel-service"
           - name: PASSWORD
             value: "badpassword"
           - name: INSTANCE_NAME

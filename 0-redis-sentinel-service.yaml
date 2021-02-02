@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: redis-sentinel
-  clusterIP: None
   ports:
   - name: sentinel
     port: 26379
