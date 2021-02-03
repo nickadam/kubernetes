@@ -24,16 +24,24 @@ spec:
           env:
           - name: REDIS_POD_NAME
             value: "redis"
+          - name: REDIS_PORT
+            value: "6379"
           - name: REDIS_SERVICE_NAME
             value: "redis-service"
           - name: REDIS_SENTINEL_POD_NAME
             value: "redis-sentinel"
+          - name: REDIS_SENTINEL_PORT
+            value: "26379"
           - name: REDIS_SENTINEL_SERVICE_NAME
             value: "redis-sentinel-service"
           - name: PASSWORD
             value: "badpassword"
           - name: INSTANCE_NAME
             value: "mycluster"
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
           ports:
             - containerPort: 6379
               name: redis
