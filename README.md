@@ -1,1 +1,1 @@
-# redis-kubernetes
+# kubernetes stuff
