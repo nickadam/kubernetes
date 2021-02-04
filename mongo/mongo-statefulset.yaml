@@ -38,7 +38,6 @@ spec:
         role: mongo
         replicaset: MainRepSet
     spec:
-      terminationGracePeriodSeconds: 10
       #volumes:
       #  - name: "mongodb-hostpath"
       #    hostPath:
@@ -47,6 +46,8 @@ spec:
         - name: mongod-container
           image: mongo
           command:
+            - "tini"
+            - "docker-entrypoint.sh"
             - "mongod"
             - "--bind_ip"
             - "0.0.0.0"
